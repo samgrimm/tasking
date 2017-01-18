@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show ]
+  before_action :set_task, only: [:show, :start ]
   before_action :set_project
   def index
     @tasks = @project.tasks
@@ -21,6 +21,15 @@ class TasksController < ApplicationController
   end
 
   def show
+  end
+
+  def start
+    @task.actual_start_date = Date.today
+    if @task.save
+      redirect_to project_task_path(@project, @task), notice: "You are currently working on #{@task.name}"
+    else
+      #do something
+    end
   end
 
   private
