@@ -1,5 +1,12 @@
 <h1><%= @project.name %></h1>
 <p>
-<em> <%= @project.start_date %> </em>
+<em>Starting: <%= @project.start_date %> Ending: <%= @project.end_date %></em>
 </p>
-<%= link_to 'Add a task', new_project_task_path(@project) %>
+<p>
+  <%= link_to 'Add a task', new_project_task_path(@project) %>
+</p>
+
+
+<% @project.tasks.each do |task| %>
+  <%= task.name %> - <%= task.estimated_start_date %> - <%= task.duration %> - <%= task.status %>
+<% end %>
