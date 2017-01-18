@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @project.calculate_project_end_date
   end
 
   private

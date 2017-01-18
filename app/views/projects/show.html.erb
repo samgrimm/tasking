@@ -6,7 +6,8 @@
   <%= link_to 'Add a task', new_project_task_path(@project) %>
 </p>
 
-
-<% @project.tasks.each do |task| %>
-  <%= task.name %> - <%= task.estimated_start_date %> - <%= task.duration %> - <%= task.status %>
-<% end %>
+<ul>
+  <% @project.tasks.each do |task| %>
+    <li> <%= task.name %> - <%= task.estimated_start_date %> - <%= task.estimated_end_date %> - <%= task.duration %> - <%= task.status %></li>
+  <% end %>
+</ul>

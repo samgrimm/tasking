@@ -13,6 +13,7 @@ class TasksController < ApplicationController
   def create
     @task = @project.tasks.build(task_params)
     if @task.save
+      @task.calculate_end_date
       redirect_to @project, notice: "Your task was added successfully"
     else
       render 'new'
