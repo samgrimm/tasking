@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :start ]
+  before_action :set_task, only: [:show, :start, :pause , :resume]
   before_action :set_project
   def index
     @tasks = @project.tasks
@@ -25,11 +25,27 @@ class TasksController < ApplicationController
 
   def start
     @task.actual_start_date = Date.today
+    @task.status = "Working"
     if @task.save
       redirect_to project_task_path(@project, @task), notice: "You are currently working on #{@task.name}"
     else
       #do something
     end
+  end
+
+  def pause
+    @task.pause_task
+    if @task.save
+      redirect_to project_task_path(@project, @task), notice: "You have paused work on #{@task.name}"
+    else
+      #do something
+    end
+  end
+
+  def resume
+    @task.Working!
+    redirect_to project_task_path(@project, @task), notice: "You have resumed work on #{@task.name}"
+
   end
 
   private
