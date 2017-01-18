@@ -9,6 +9,20 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
+  def create
+    @project = Project.new(project_params)
+    @project.user_id = current_user.id
+    if @project.save
+      redirect_to @project, notice: "Your project was created successfully"
+    else
+      render 'new'
+    end
+  end
+
+  def show
+    @project = Project.find(params[:id])
+  end
+
   private
 
 

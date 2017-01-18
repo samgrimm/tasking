@@ -41,4 +41,27 @@ describe 'navigate' do
       end
     end
   end
+
+  describe "creation" do
+    before do
+      login_as(user, :scope => :user)
+      visit new_project_path
+    end
+    it "has a new form that can be reached" do
+      expect(page.status_code).to eq(200)
+    end
+    it "can be created from new form page" do
+      fill_in 'project[start_date]', with: (Date.today + 30.days)
+      fill_in 'project[name]', with: "New Project"
+      expect { click_on "Save" }.to change(Project, :count).by(1)
+    end
+
+    it "will have an user associated with the post" do
+      fill_in 'project[start_date]', with: (Date.today + 30.days)
+      fill_in 'project[name]', with: "user_association"
+      click_on "Save"
+
+      expect(User.last.projects.last.name).to eq("user_association")
+    end
+  end
 end

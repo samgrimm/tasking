@@ -1,0 +1,5 @@
+<h1><%= @project.name %></h1>
+<p>
+<em> <%= @project.start_date %> </em>
+</p>
+<%= link_to 'Add a task', new_project_task_path(@project) %>
