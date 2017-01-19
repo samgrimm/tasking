@@ -25,6 +25,12 @@ class ProjectsController < ApplicationController
     @tasks = @project.tasks.order(:estimated_start_date)
   end
 
+  def send_report
+    @project = Project.find(params[:id])
+    @project.send_report
+    redirect_to project_tasks_path(@project), notice: "The Daily Report was sent to your client"
+  end
+
   private
 
 

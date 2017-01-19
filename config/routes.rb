@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :projects do
+      member do
+        get :send_report
+      end
     resources :tasks do
       member do
         get :start
