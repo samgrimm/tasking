@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.user_id = current_user.id
     if @project.save
+      @project.add_client(params[:project][:client])
       redirect_to @project, notice: "Your project was created successfully"
     else
       render 'new'

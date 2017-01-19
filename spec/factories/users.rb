@@ -11,4 +11,10 @@ FactoryGirl.define do
       availability 8
     end
 
+    factory :client, class: "Client" do
+      email "client@user.com"
+      password "foobar"
+      password_confirmation "foobar"
+    end
+
 end

@@ -56,12 +56,35 @@ describe 'navigate' do
       expect { click_on "Save" }.to change(Project, :count).by(1)
     end
 
-    it "will have an user associated with the post" do
+    it "will have an user associated with the project" do
       fill_in 'project[start_date]', with: (Date.today + 30.days)
       fill_in 'project[name]', with: "user_association"
       click_on "Save"
 
       expect(User.last.projects.last.name).to eq("user_association")
+    end
+
+    it "will have a client associated with the project" do
+      fill_in 'project[start_date]', with: (Date.today + 30.days)
+      fill_in 'project[name]', with: "client_association"
+      fill_in 'project[client]', with: "client@email.com"
+      click_on "Save"
+
+      expect(Client.last.email).to eq("client@email.com")
+
+    end
+
+    it "will have add an existing client to a project" do
+      user = FactoryGirl.create(:user)
+      project = FactoryGirl.create(:project, user_id: user.id)
+      client = FactoryGirl.create(:client, project_id: project.id)
+      fill_in 'project[start_date]', with: (Date.today + 30.days)
+      fill_in 'project[name]', with: "client_association"
+      fill_in 'project[client]', with: client.email
+      click_on "Save"
+
+      expect(Client.last.project.name).to eq("client_association")
+
     end
   end
 end

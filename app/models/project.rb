@@ -13,4 +13,16 @@ class Project < ApplicationRecord
   def send_report
     ClientMailer.report(self).deliver
   end
+
+  def add_client email
+    if Client.find_by(email: email)
+      client = Client.find_by(email: email)
+    else
+      random_password = SecureRandom.hex
+      client = Client.new(email: email, password: random_password, password_confirmation: random_password)
+    end
+    client.project_id = self.id
+    client.save
+  end
+
 end
