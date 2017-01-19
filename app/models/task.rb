@@ -7,9 +7,17 @@ class Task < ApplicationRecord
     self.estimated_end_date = self.estimated_start_date + total_days.days
     self.save
   end
-
+# needs refactoring
   def pause_task
     self.status = "Paused"
+    last_update = self.updated_at
+    self.save
+    calc_duration = (self.updated_at - last_update) / 3600
+    self.actual_duration = self.actual_duration + calc_duration
+  end
+
+  def complete_task
+    self.status = "Completed"
     last_update = self.updated_at
     self.save
     calc_duration = (self.updated_at - last_update) / 3600

@@ -1,14 +1,15 @@
 <h1><%= @task.name %></h1>
+<h2>For project <%= link_to @project.name, @project %></h2>
 <p id="totalTime">
-  <%= @task.duration %>
+  Estimated Duration: <%= @task.duration %>
+</p>
+<p >
+  Actual Duration: <%= @task.actual_duration %>
 </p>
 
-
 <p>
-  <% if @task.Working? %>
-    <%= link_to 'Pause Task', pause_project_task_path(@task.project, @task) %>
-  <% else %>
-    <%= link_to 'Resume Task', resume_project_task_path(@task.project, @task) %>
-  <% end %>  
-   | <%= link_to 'End Task', root_path %>
+
+    <%= link_to 'Pause Task', pause_project_task_path(@task.project, @task) if @task.Working? || @task.Scheduled? %>
+    <%= link_to 'Resume Task', resume_project_task_path(@task.project, @task) if @task.Paused? %>
+   | <%= link_to 'Complete Task', complete_project_task_path(@task.project, @task) unless @task.Completed? %>
 </p>

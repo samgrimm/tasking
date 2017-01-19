@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :start, :pause , :resume]
+  before_action :set_task, only: [:show, :start, :pause , :resume, :complete]
   before_action :set_project
   def index
     @tasks = @project.tasks
@@ -45,7 +45,15 @@ class TasksController < ApplicationController
   def resume
     @task.Working!
     redirect_to project_task_path(@project, @task), notice: "You have resumed work on #{@task.name}"
+  end
 
+  def complete
+    @task.complete_task
+    if @task.save
+      redirect_to project_path(@project), notice: "You have completed work on #{@task.name}"
+    else
+      # do something
+    end
   end
 
   private

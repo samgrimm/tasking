@@ -6,6 +6,7 @@ Rails.application.routes.draw do
         get :start
         get :pause
         get :resume
+        get :complete
       end
     end
   end

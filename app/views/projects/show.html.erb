@@ -10,24 +10,29 @@
   <thead>
     <tr>
       <th>Task Name</th>
-      <th>Start Date</th>
-      <th>Duration</th>
-      <th>End Date</th>
+      <th>Estimated Start Date</th>
+      <th>Estimated Duration</th>
+      <th>Estimated End Date</th>
       <th>Status</th>
       <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
-    <% @project.tasks.each do |task| %>
+    <% @tasks.each do |task| %>
       <tr>
-        <td> <%= task.name %> </td>
+        <td> <%= link_to task.name, project_task_path(@project, task) %> </td>
         <td> <%= task.estimated_start_date %></td>
         <td> <%= task.duration %> </td>
         <td> <%= task.estimated_end_date %></td>
         <td> <%= task.status %></td>
-        <td> <%= link_to 'Start Task', start_project_task_path(@project, task), id:"start_task_#{task.id}" %></td>
-        <td> <%= link_to 'Edit Task', root_path %></td>
+        <% if task.Completed? %>
+          <td><%= (task.actual_duration * 3600).truncate(0) %> hours</td>
+          <td><%= task.updated_at.strftime("Completed on %m/%d/%Y")  %></td>
+        <% else %>
+          <td> <%= link_to 'Start Task', start_project_task_path(@project, task), id:"start_task_#{task.id}" %></td>
+          <td> <%= link_to 'Edit Task', root_path %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

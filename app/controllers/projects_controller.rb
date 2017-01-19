@@ -22,6 +22,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @project.calculate_project_end_date
+    @tasks = @project.tasks.order(:estimated_start_date)
   end
 
   private
