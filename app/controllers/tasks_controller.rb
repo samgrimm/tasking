@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:show, :start, :pause , :resume, :complete]
   before_action :set_project
   def index
-    @tasks = @project.tasks
+    @tasks = @project.tasks.where(updated_at: Date.today)
   end
 
   def new

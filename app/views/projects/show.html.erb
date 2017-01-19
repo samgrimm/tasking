@@ -3,7 +3,7 @@
 <em>Starting: <%= @project.start_date %> Ending: <%= @project.end_date %></em>
 </p>
 <p>
-  <%= link_to 'Add a task', new_project_task_path(@project) %>
+  <%= link_to 'Add a task', new_project_task_path(@project) %> | <%= link_to 'Daily Report', project_tasks_path(@project) %>
 </p>
 
 <table class="table">

@@ -1,5 +1,34 @@
-<h1>Tasks</h1>
+<h1>Daily Report</h1>
 
-<% @tasks.each do |task|  %>
-  <%= task.name %> - <%= task.estimated_start_date %> - <%= task.duration %>
-<% end %>
+<p>
+  <em>Percentage Completed: <%= percent_complete @project %></em>
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Task Name</th>
+      <th>Estimated Start Date</th>
+      <th>Estimated Duration</th>
+      <th>Estimated End Date</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td> <%= link_to task.name, project_task_path(@project, task) %> </td>
+        <td> <%= task.estimated_start_date %></td>
+        <td> <%= task.duration %> </td>
+        <td> <%= task.estimated_end_date %></td>
+        <td> <%= task.status %></td>
+        <% if task.Completed? %>
+          <td><%= (task.actual_duration * 3600).truncate(0) %> hours</td>
+          <td><%= task.updated_at.strftime("Completed on %m/%d/%Y")  %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
