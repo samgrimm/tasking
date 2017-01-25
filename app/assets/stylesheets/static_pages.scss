@@ -8,6 +8,10 @@
 
 }
 
+.top-margin {
+  margin-top: 100px;
+}
+
 /*!
  * Start Bootstrap - Agency v4.0.0-alpha (http://startbootstrap.com/template-overviews/agency)
  * Copyright 2013-2017 Start Bootstrap
@@ -174,6 +178,34 @@ fieldset[disabled] .btn-xl.active {
 #mainNav .container .navbar-nav .nav-item .nav-link.active {
   color: #fed136;
 }
+@media (min-width: 992px) {
+  #signedInNav {
+    padding: 20px 0;
+    background-color: #222222;
+    -webkit-transition: padding 0.3s;
+    -moz-transition: padding 0.3s;
+    transition: padding 0.3s;
+    border: none;
+  }
+  #signedInNav .navbar-brand {
+    font-size: 1.75em;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  #signedInNav .navbar-nav .nav-item .nav-link {
+    padding: 1.1em 1em !important;
+  }
+  #signedInNav.navbar-shrink {
+    background-color: #222222;
+    padding: 0;
+  }
+  #signedInNav.navbar-shrink .navbar-brand {
+    padding: 12px 0;
+    font-size: 1.25em;
+  }
+}
+
 @media (min-width: 992px) {
   #mainNav {
     background-color: transparent;
