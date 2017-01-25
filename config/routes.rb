@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   resources :projects do
       member do
         get :send_report
+        get :pause
+        get :resume
+        get :complete
+        get :cancel
       end
     resources :tasks do
       member do

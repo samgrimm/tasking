@@ -32,6 +32,31 @@ class ProjectsController < ApplicationController
     redirect_to project_tasks_path(@project), notice: "The Daily Report was sent to your client"
   end
 
+  def pause
+    @project = Project.find(params[:id])
+    @project.Paused!
+    redirect_to projects_path, notice: "You have paused work on #{@project.name}"
+  end
+
+  def resume
+    @project = Project.find(params[:id])
+    @project.Scheduled!
+    redirect_to projects_path, notice: "You have resumed work on #{@project.name}"
+  end
+
+  def complete
+    @project = Project.find(params[:id])
+    @project.complete_project
+    redirect_to projects_path, notice: "You have completed work on #{@project.name}"
+  end
+
+  def cancel
+    @project = Project.find(params[:id])
+    @project.Cancelled!
+    redirect_to projects_path, notice: "You have cancelled #{@project.name}"
+  end
+
+
   private
 
 

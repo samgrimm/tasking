@@ -12,6 +12,10 @@
   margin-top: 100px;
 }
 
+.circle-background {
+  color: $brand-warning;
+}
+
 /*!
  * Start Bootstrap - Agency v4.0.0-alpha (http://startbootstrap.com/template-overviews/agency)
  * Copyright 2013-2017 Start Bootstrap
@@ -22,13 +26,13 @@ body {
   font-family: "Roboto Slab", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .text-primary {
-  color: #fed136 !important;
+  color: $theme-primary !important;
 }
 p {
   line-height: 1.75;
 }
 a {
-  color: #fed136;
+  color: $theme-primary;
 }
 a:hover,
 a:focus,
@@ -48,8 +52,8 @@ h6 {
 }
 .btn-primary {
   color: white;
-  background-color: #fed136;
-  border-color: #fed136;
+  background-color: $theme-primary;
+  border-color: $theme-primary;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
@@ -84,17 +88,17 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary.disabled.active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
-  background-color: #fed136;
-  border-color: #fed136;
+  background-color: $theme-primary;
+  border-color: $theme-primary;
 }
 .btn-primary .badge {
-  color: #fed136;
+  color: $theme-primary;
   background-color: white;
 }
 .btn-xl {
   color: white;
-  background-color: #fed136;
-  border-color: #fed136;
+  background-color: $theme-primary;
+  border-color: $theme-primary;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
@@ -132,11 +136,11 @@ fieldset[disabled] .btn-xl:active,
 .btn-xl.disabled.active,
 .btn-xl[disabled].active,
 fieldset[disabled] .btn-xl.active {
-  background-color: #fed136;
-  border-color: #fed136;
+  background-color: $theme-primary;
+  border-color: $theme-primary;
 }
 .btn-xl .badge {
-  color: #fed136;
+  color: $theme-primary;
   background-color: white;
 }
 #mainNav {
@@ -145,7 +149,7 @@ fieldset[disabled] .btn-xl.active {
 #mainNav .navbar-toggler {
   border: 0;
   color: white;
-  background-color: #fed136;
+  background-color: $theme-primary;
   font-size: 12px;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
@@ -156,7 +160,7 @@ fieldset[disabled] .btn-xl.active {
   padding: 0;
 }
 #mainNav .container .navbar-brand {
-  color: #fed136;
+  color: $theme-primary;
   font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
 }
 #mainNav .container .navbar-brand:hover,
@@ -176,7 +180,7 @@ fieldset[disabled] .btn-xl.active {
 }
 #mainNav .container .navbar-nav .nav-item .nav-link:hover,
 #mainNav .container .navbar-nav .nav-item .nav-link.active {
-  color: #fed136;
+  color: $theme-primary;
 }
 @media (min-width: 992px) {
   #signedInNav {
@@ -243,7 +247,7 @@ header {
   background-size: cover;
   -o-background-size: cover;
   text-align: center;
-  color: white;
+  color: $gray-darker;
 }
 header .intro-text {
   padding-top: 100px;
@@ -429,7 +433,7 @@ section h3.section-subheading {
   height: 80px;
   position: absolute;
   z-index: 100;
-  background-color: #fed136;
+  background-color: $theme-primary;
   color: white;
   border-radius: 100%;
   border: 7px solid #f1f1f1;
@@ -585,7 +589,7 @@ section#contact .form-group textarea.form-control {
   height: 236px;
 }
 section#contact .form-control:focus {
-  border-color: #fed136;
+  border-color: $theme-primary;
   box-shadow: none;
 }
 section#contact ::-webkit-input-placeholder {
@@ -656,7 +660,7 @@ ul.social-buttons li a {
 ul.social-buttons li a:hover,
 ul.social-buttons li a:focus,
 ul.social-buttons li a:active {
-  background-color: #fed136;
+  background-color: $theme-primary;
 }
 .btn:focus,
 .btn:active,
@@ -740,11 +744,11 @@ ul.social-buttons li a:active {
 }
 ::-moz-selection {
   text-shadow: none;
-  background: #fed136;
+  background: $theme-primary;
 }
 ::selection {
   text-shadow: none;
-  background: #fed136;
+  background: $theme-primary;
 }
 img::selection {
   background: transparent;
@@ -753,5 +757,5 @@ img::-moz-selection {
   background: transparent;
 }
 body {
-  webkit-tap-highlight-color: #fed136;
+  webkit-tap-highlight-color: $theme-primary;
 }

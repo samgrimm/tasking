@@ -1,3 +1,12 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-primary {
+  background-color: $brand-primary!important;
+  border: none !important;
+}
+
+a {
+  color: $gray-base!important;
+}
