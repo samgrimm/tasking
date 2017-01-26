@@ -8,5 +8,29 @@
 }
 
 a {
-  color: $gray-base!important;
+  color: $blue!important;
+}
+a:hover {
+  color: $gray-darker!important;
+  text-decoration: none!important;
+}
+
+.card-gray {
+  background-color: $gray-base!important;
+  border: none !important;
+}
+
+.card-warning {
+  background-color: $yellow!important;
+  border: none !important;
+}
+
+.card-danger {
+  background-color: $red!important;
+  border: none !important;
+}
+
+.card-success {
+  background-color: $brand-success!important;
+  border: none !important;
 }

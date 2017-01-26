@@ -10,7 +10,7 @@ class Project < ApplicationRecord
   scope :scheduled?, -> { where(status: 0) }
   scope :paused?, -> { where(status: 1) }
   scope :completed?, -> { where(status: 2) }
-  scope :canclled?, -> { where(status: 3) }
+  scope :cancelled?, -> { where(status: 3) }
 
   def calculate_project_end_date
     self.end_date = tasks.maximum(:estimated_end_date)

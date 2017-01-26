@@ -1,7 +1,8 @@
 
 @user = User.create(email: "email@test.com",
                     password:"foobar",
-                    password_confirmation:"foobar"
+                    password_confirmation:"foobar",
+                    availability: 6
                     )
 puts "1 User created"
 
@@ -27,10 +28,11 @@ puts "6 projects created"
   n = 0
   15.times do |task|
     n = n + 1
-    project.tasks.create(estimated_start_date: (project.start_date + n.days),
+    task = project.tasks.create(estimated_start_date: (project.start_date + n.days),
                          duration: 20,
                          name: "#{n}th_task for project #{project.name}",
                          status: 0)
+    task.calculate_end_date
   end
 end
 

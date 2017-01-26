@@ -1,96 +1,96 @@
 <h1>Projects Dashboard</h1>
 
-<div class="status-cards">
+<div class="container status-cards top-margin-50">
   <div class="row">
     <div class="col-sm-3">
-      <table class="table table-bordered h-100">
-        <tr>
-          <td class="table-success text-center align-middle"><h2>4</h2></td>
-          <td class="align-middle"><h3>Active Projects</h3></td>
-        </tr>
-      </table>
+      <div class="card card-inverse card-gray text-center">
+        <i class="fa fa-calendar fa-4x fa-inverse"></i>
+        <h4 class="mt-3"><%=@projects.scheduled?.count%> Active Projects</h4>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="card card-inverse card-warning text-center">
+        <i class="fa fa-flag fa-4x fa-inverse"></i>
+        <h4 class="mt-3"><%=active_tasks @projects%> Active Tasks</h4>
 
+      </div>
     </div>
     <div class="col-sm-3">
-      <table class="table table-bordered h-100">
-        <tr>
-          <td class="table-warning text-center align-middle"><h2>50</h2></td>
-          <td class="align-middle"><h3>Scheduled Tasks</h3></td>
-        </tr>
-      </table>
+      <div class="card card-inverse card-danger text-center">
+        <i class="fa fa-fire fa-4x fa-inverse"></i>
+        <h4 class="mt-3"><%=tasks_behind_schedule @projects%> Tasks Past Due</h4>
+
+      </div>
     </div>
     <div class="col-sm-3">
-      <table class="table table-bordered h-100">
-        <tr>
-          <td class="table-danger text-center align-middle"><h2>10</h2></td>
-          <td class="align-middle"><h3>Tasks behind schedule</h3></td>
-        </tr>
-      </table>
-    </div>
-    <div class="col-sm-3">
-      <table class="table table-bordered h-100">
-        <tr>
-          <td class="table-info text-center align-middle"><h2>15</h2></td>
-          <td class="align-middle"><h3>Tasks completed this week</h3></td>
-        </tr>
-      </table>
+      <div class="card card-inverse card-success text-center">
+        <i class="fa fa-trophy fa-4x fa-inverse"></i>
+        <h4 class="mt-3"><%= tasks_completed_this_week @projects %> Done this week</h4>
+
+      </div>
     </div>
 
   </div>
 </div>
-<div class="container">
+<div class="container top-margin-50">
   <div class="row">
     <div class="col-sm-12">
       <% if @projects.scheduled?  %>
       <h2>Current Projects</h2>
-      <table class="table table-bordered h-100">
+      <table class="table table-bordered">
         <% @projects.scheduled?.each do |scheduled| %>
         <tr>
           <td><%= link_to scheduled.name, scheduled %></td>
           <td><%= scheduled.end_date %></td>
           <td><%= scheduled.client %></td>
-          <td><%= link_to 'Mark Complete', complete_project_path(scheduled), id: "mark_complete_#{scheduled.id}" %></td>
-          <td><%= link_to 'Cancel', cancel_project_path(scheduled), id: "mark_cancelled_#{scheduled.id}" %></td>
-          <td><%= link_to 'Hold', pause_project_path(scheduled), id: "pause_#{scheduled.id}" %></td>
+          <td class="text-center"><%= link_to '', complete_project_path(scheduled), class:"fa fa-check-square-o", id: "mark_complete_#{scheduled.id}" %></td>
+          <td class="text-center" ><%= link_to '', cancel_project_path(scheduled), class:"fa fa-ban", id: "mark_cancelled_#{scheduled.id}" %></td class="text-center" >
+          <td class="text-center" ><%= link_to '', pause_project_path(scheduled),  class:"fa fa-pause-circle", id: "pause_#{scheduled.id}" %></td>
         </tr>
         <% end %>
       </table>
       <% end %>
     </div>
-</div>
-  <div class="container">
-
-    <div class="row">
-      <div class="col-sm-6">
-        <% if @projects.paused? || @projects.cancelled?  %>
-        <h2>Pending Projects</h2>
-        <table class="table table-bordered h-100">
-          <% @projects.paused?.each do |paused| %>
-          <tr>
-            <td><%= paused.name %></td>
-            <td><%= paused.client %></td>
-            <td><%= link_to 'Resume', resume_project_path(paused), id: "resume_#{paused.id}" %></td>
-          </tr>
-          <% end %>
-        </table>
-        <% end %>
-      </div>
-      <div class="col-sm-6">
-        <% if @projects.completed?  %>
-        <h2>Past Projects</h2>
-        <table class="table table-bordered h-100">
-          <% @projects.completed?.each do |completed| %>
-          <tr>
-            <td><%= completed.name %></td>
-            <td><%= completed.actual_end_date %></td>
-            <td><%= completed.client %></td>
-            <td><%= link_to 'View Summary', completed %></td>
-          </tr>
-          <% end %>
-        </table>
-        <% end %>
-      </div>
-    </div>
-
   </div>
+</div>
+<div class="container top-margin-50">
+  <div class="row">
+    <div class="col-sm-6">
+      <% if @projects.paused? || @projects.cancelled?  %>
+      <h2>Pending Projects</h2>
+      <table class="table table-bordered">
+        <% @projects.paused?.each do |paused| %>
+        <tr>
+          <td><%= link_to paused.name, paused %></td>
+          <td><%= paused.client %></td>
+          <td class="text-center"><%= link_to '', resume_project_path(paused), class:"fa fa-play-circle", id: "resume_#{paused.id}" %></td>
+        </tr>
+        <% end %>
+        <% @projects.cancelled?.each do |paused| %>
+        <tr>
+          <td><%= link_to paused.name, paused %></td>
+          <td><%= paused.client %></td>
+          <td class="text-center"><%= link_to '', resume_project_path(paused), class:"fa fa-play-circle", id: "resume_#{paused.id}" %></td>
+        </tr>
+        <% end %>
+      </table>
+      <% end %>
+    </div>
+    <div class="col-sm-6">
+      <% if @projects.completed?  %>
+      <h2>Past Projects</h2>
+      <table class="table table-bordered">
+        <% @projects.completed?.each do |completed| %>
+        <tr>
+          <td><%= link_to completed.name, completed %></td>
+          <td><%= completed.actual_end_date %></td>
+          <td><%= completed.client %></td>
+          <td class="text-center"><%= link_to '', completed, class:"fa fa-archive" %></td>
+        </tr>
+        <% end %>
+      </table>
+      <% end %>
+    </div>
+  </div>
+
 </div>
