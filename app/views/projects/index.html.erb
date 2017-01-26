@@ -44,7 +44,7 @@
           <td><%= scheduled.end_date %></td>
           <td><%= scheduled.client %></td>
           <td class="text-center"><%= link_to '', complete_project_path(scheduled), class:"fa fa-check-square-o", id: "mark_complete_#{scheduled.id}" %></td>
-          <td class="text-center" ><%= link_to '', cancel_project_path(scheduled), class:"fa fa-ban", id: "mark_cancelled_#{scheduled.id}" %></td class="text-center" >
+          <td class="text-center" ><%= link_to '', cancel_project_path(scheduled), class:"fa fa-ban", id: "mark_cancelled_#{scheduled.id}" %></td>
           <td class="text-center" ><%= link_to '', pause_project_path(scheduled),  class:"fa fa-pause-circle", id: "pause_#{scheduled.id}" %></td>
         </tr>
         <% end %>
