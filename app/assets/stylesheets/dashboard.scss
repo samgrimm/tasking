@@ -1,0 +1,15 @@
+@import "variables";
+@import "bootstrap";
+@import "gritter";
+@import "font-awesome";
+@import "tasks.scss";
+@import "static_pages.scss";
+@import "projects.scss";
+
+.sidebar {
+  background-color: #222222;
+  color: $white;
+  a {
+    color: $white;
+  }
+}

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
+  layout 'dashboard'
 
   def index
     @projects = Project.projects_by(current_user)
