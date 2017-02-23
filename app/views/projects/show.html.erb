@@ -74,7 +74,7 @@
               <% else %>
                 <td> <%= link_to 'Start Task', start_project_task_path(@project, task), id:"start_task_#{task.id}" %></td>
               <% end %>
-              <td> <%= link_to 'Edit Task', root_path %></td>
+              <td> <%= link_to 'Edit Task', edit_project_task_path(@project, task) %></td>
             <% end %>
           </tr>
         <% end %>

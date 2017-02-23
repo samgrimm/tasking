@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_task, only: [:show, :start, :pause , :resume, :complete]
+  before_action :set_task, only: [:show, :start, :pause , :resume, :complete, :edit, :update]
   before_action :set_project
   def index
     @tasks = @project.tasks.where(updated_at: Date.today)
@@ -17,6 +17,18 @@ class TasksController < ApplicationController
       redirect_to @project, notice: "Your task was added successfully"
     else
       render 'new'
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @task.update(task_params)
+      @task.calculate_end_date
+      redirect_to @project, notice: "Your task was updated successfully"
+    else
+      render 'edit'
     end
   end
 

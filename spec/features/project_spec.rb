@@ -35,8 +35,8 @@ describe 'navigate' do
     describe "new" do
       it "has a link from the homepage" do
         visit root_path
-        expect(page).to have_content('Create a project')
-        click_link "new_project_from_nav"
+        expect(page).to have_content('New Project')
+        click_link "New Project"
         expect(page.status_code).to eq(200)
       end
     end
