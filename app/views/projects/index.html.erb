@@ -38,7 +38,7 @@
       <% if @projects.scheduled?  %>
       <h2>Current Projects</h2>
       <table class="table table-bordered">
-        <% @projects.scheduled?.each do |scheduled| %>
+        <%= @projects.scheduled?.each do |scheduled| %>
         <tr>
           <td><%= link_to scheduled.name, scheduled %></td>
           <td><%= scheduled.end_date %></td>
