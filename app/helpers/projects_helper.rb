@@ -1,9 +1,33 @@
 module ProjectsHelper
 
+  def icon_helper status
+    icon = case status
+      when "Scheduled" then fa_icon "calendar 4x"
+      when "Paused" then fa_icon "pause 4x"
+      when "Cancelled" then fa_icon "ban 4x"
+      when "Completed" then fa_icon "check-circle 4x"
+    end
+    icon
+  end
+
+  def background_helper status
+    background = case status
+      when "Scheduled" then "bg-primary"
+      when "Paused" then "bg-warning"
+      when "Cancelled" then "bg-faded"
+      when "Completed" then "bg-success"
+    end
+    background
+  end
+
   def percent_complete project
     total_hours = project.tasks.sum(:duration)
-    completed_hours = project.tasks.where(status: "Completed").sum(:duration)
-    percent_complete = (completed_hours/total_hours)*100
+    if total_hours == 0
+      percent_complete = 0
+    else
+      completed_hours = project.tasks.where(status: "Completed").sum(:duration)
+      percent_complete = (completed_hours/total_hours)*100
+    end
     return percent_complete.truncate(0).to_s + "%"
   end
 

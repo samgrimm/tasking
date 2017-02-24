@@ -1,6 +1,6 @@
 <h1>Projects Dashboard</h1>
 
-<div class="container status-cards top-margin-50">
+<div class="status-cards top-margin-50">
   <div class="row">
     <div class="col-sm-3">
       <div class="card card-inverse card-gray text-center">
@@ -32,65 +32,9 @@
 
   </div>
 </div>
-<div class="container top-margin-50">
-  <div class="row">
-    <div class="col-sm-12">
-      <% if @projects.scheduled?  %>
-      <h2>Current Projects</h2>
-      <table class="table table-bordered">
-        <%= @projects.scheduled?.each do |scheduled| %>
-        <tr>
-          <td><%= link_to scheduled.name, scheduled %></td>
-          <td><%= scheduled.end_date %></td>
-          <td><%= scheduled.client %></td>
-          <td class="text-center"><%= link_to '', complete_project_path(scheduled), class:"fa fa-check-square-o", id: "mark_complete_#{scheduled.id}" %></td>
-          <td class="text-center" ><%= link_to '', cancel_project_path(scheduled), class:"fa fa-ban", id: "mark_cancelled_#{scheduled.id}" %></td>
-          <td class="text-center" ><%= link_to '', pause_project_path(scheduled),  class:"fa fa-pause-circle", id: "pause_#{scheduled.id}" %></td>
-        </tr>
-        <% end %>
-      </table>
-      <% end %>
-    </div>
-  </div>
-</div>
-<div class="container top-margin-50">
-  <div class="row">
-    <div class="col-sm-6">
-      <% if @projects.paused? || @projects.cancelled?  %>
-      <h2>Pending Projects</h2>
-      <table class="table table-bordered">
-        <% @projects.paused?.each do |paused| %>
-        <tr>
-          <td><%= link_to paused.name, paused %></td>
-          <td><%= paused.client %></td>
-          <td class="text-center"><%= link_to '', resume_project_path(paused), class:"fa fa-play-circle", id: "resume_#{paused.id}" %></td>
-        </tr>
-        <% end %>
-        <% @projects.cancelled?.each do |paused| %>
-        <tr>
-          <td><%= link_to paused.name, paused %></td>
-          <td><%= paused.client %></td>
-          <td class="text-center"><%= link_to '', resume_project_path(paused), class:"fa fa-play-circle", id: "resume_#{paused.id}" %></td>
-        </tr>
-        <% end %>
-      </table>
-      <% end %>
-    </div>
-    <div class="col-sm-6">
-      <% if @projects.completed?  %>
-      <h2>Past Projects</h2>
-      <table class="table table-bordered">
-        <% @projects.completed?.each do |completed| %>
-        <tr>
-          <td><%= link_to completed.name, completed %></td>
-          <td><%= completed.actual_end_date %></td>
-          <td><%= completed.client %></td>
-          <td class="text-center"><%= link_to '', completed, class:"fa fa-archive" %></td>
-        </tr>
-        <% end %>
-      </table>
-      <% end %>
-    </div>
+<div class="top-margin-50">
+  <div class="card-columns">
+    <%= render @projects %>
   </div>
 
 </div>

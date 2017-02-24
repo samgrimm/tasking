@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  layout 'dashboard'
+  layout 'dashboard', only: [:index, :new ]
 
   def index
     @projects = Project.projects_by(current_user)
@@ -25,6 +25,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.calculate_project_end_date
     @tasks = @project.tasks.order(:estimated_start_date)
+    render action: "show", layout: "project"
   end
 
   def send_report

@@ -1,0 +1,17 @@
+<%= link_to project do %>
+<div class="card ">
+  <div class="card-header <%= background_helper project.status%> text-center text-white">
+    <%= icon_helper project.status %> <h3><%= percent_complete project %></h3>
+  </div>
+  <div class="card-block text-center">
+    <h4 class="card-title"><%= project.name %></h4>
+
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Start date: <%= project.start_date %></li>
+    <li class="list-group-item">End date: <%= project.end_date %></li>
+    <%= content_tag(:li, project.client.email) unless project.client.nil?%>
+    <li class="list-group-item"><%= pluralize(project.tasks.count, "task")  %> created</li>
+  </ul>
+</div>
+<% end %>
