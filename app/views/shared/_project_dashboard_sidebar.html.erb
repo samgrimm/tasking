@@ -8,11 +8,14 @@
   <% else %>
     <%= render 'project_navigation', project: @project %>
   <% end %>
-  <!-- to do:
-  Add summary for completed project
-  disable buttons for completed projects
-  add logic to show resume for paused projects -->
-
+  <% if !@project.description.nil? %>
+    <div class="card text-muted mt-3">
+      <h4 class="card-header">Description</h4>
+      <div class="card-block">
+        <p><%= @project.description %></p>
+      </div>
+    </div>
+  <% end %>
 
 
 </div>
