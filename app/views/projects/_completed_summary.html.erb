@@ -1,0 +1,7 @@
+<div class="card text-center text-muted">
+  <h3>Summary</h3>
+  <p class="mt-2"><i class="fa fa-calendar"></i> Started: <%= @project.start_date %></p>
+  <p>Endend: <%= @project.actual_end_date %></p>
+  <p class="mt-2"><i class="fa fa-clock-o"></i> Hours Worked: <%= completed_hours @project %></p>
+  <p class="mt-2"><i class="fa fa-archive"></i> Total Tasks: <%= @project.tasks.count %></p>
+</div>

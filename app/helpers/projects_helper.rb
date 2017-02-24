@@ -20,8 +20,15 @@ module ProjectsHelper
     background
   end
 
-  def percent_complete project
+  def total_hours project
     total_hours = project.tasks.sum(:duration)
+  end
+  def completed_hours project
+    completed_hours = project.tasks.sum(:actual_duration)
+  end
+
+  def percent_complete project
+    total_hours = total_hours project
     if total_hours == 0
       percent_complete = 0
     else

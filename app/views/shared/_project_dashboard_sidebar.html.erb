@@ -3,22 +3,16 @@
   <% if !@project.client.nil? %>
     <h4>Client: <%= @project.client.email %></h4>
   <% end %>
+  <% if @project.Completed? %>
+    <%= render 'completed_summary', project: @project %>
+  <% else %>
+    <%= render 'project_navigation', project: @project %>
+  <% end %>
   <!-- to do:
   Add summary for completed project
   disable buttons for completed projects
   add logic to show resume for paused projects -->
 
 
-  <div class="card text-center text-muted">
-    <p class="mt-2"><i class="fa fa-calendar"></i> Start: <%= @project.start_date %></p>
-    <p>End: <%= @project.end_date %></p>
 
-  </div>
-  <ul class="nav flex-column">
-    <li class="nav-item "><%= link_to 'Add a task', new_project_task_path(@project), class:"nav-link"%></li>
-    <li class="nav-item "><%= link_to 'Daily Report', project_tasks_path(@project), class:"nav-link" %></li>
-    <li class="nav-item "><%= link_to 'Mark as Complete ', complete_project_path(@project), class:"nav-link fa fa-check-square-o", id: "mark_complete_#{@project.id}" %></li>
-    <li class="nav-item " ><%= link_to 'Cancel Project', cancel_project_path(@project), class:"fa fa-ban", id: "mark_cancelled_#{@project.id}" %></li>
-    <li class="nav-item " ><%= link_to 'Pause Project', pause_project_path(@project),  class:"fa fa-pause-circle", id: "pause_#{@project.id}" %></li>
-  </ul>
 </div>
