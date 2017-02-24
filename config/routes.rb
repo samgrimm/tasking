@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :clients, only: :index
   resources :projects do
       member do
         get :send_report
