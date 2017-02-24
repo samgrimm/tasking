@@ -8,8 +8,11 @@
 </p>
 
 <p>
-
+    <%= link_to 'Edit Task', edit_project_task_path(@task.project, @task) %> |
     <%= link_to 'Pause Task', pause_project_task_path(@task.project, @task) if @task.Working? || @task.Scheduled? %>
     <%= link_to 'Resume Task', resume_project_task_path(@task.project, @task) if @task.Paused? %>
-   | <%= link_to 'Complete Task', complete_project_task_path(@task.project, @task) unless @task.Completed? %>
+   |<%= link_to 'Complete Task', complete_project_task_path(@task.project, @task) unless @task.Completed? %>
 </p>
+<div class="">
+  <p><%= @task.description %></p>
+</div>

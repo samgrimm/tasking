@@ -4,9 +4,9 @@
     <h4>Client: <%= @project.client.email %></h4>
   <% end %>
   <% if @project.Completed? %>
-    <%= render 'completed_summary', project: @project %>
+    <%= render 'shared/completed_summary', project: @project %>
   <% else %>
-    <%= render 'project_navigation', project: @project %>
+    <%= render 'shared/project_navigation', project: @project %>
   <% end %>
   <% if !@project.description.nil? %>
     <div class="card text-muted mt-3">

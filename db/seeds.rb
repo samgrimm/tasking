@@ -44,7 +44,8 @@ puts "6 projects created"
     task = project.tasks.create(estimated_start_date: (project.start_date + n.days),
                          duration: 20,
                          name: "#{n}th_task for project #{project.name}",
-                         status: 0)
+                         status: 0,
+                         description: description)
     task.calculate_end_date
   end
 end
