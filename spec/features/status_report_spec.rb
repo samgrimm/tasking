@@ -4,8 +4,13 @@ describe "create a daily status report" do
   before do
     @user = FactoryGirl.create(:user, availability: 10)
 
-    @project = FactoryGirl.create(:project, user_id: @user.id, start_date: (Date.today - 7.days), end_date: (Date.today + 1.days))
-    @client = FactoryGirl.create(:user, type:"Client", project_id: @project.id)
+    @client = FactoryGirl.create(:user, type:"Client")
+    @project = FactoryGirl.create(:project,
+                user_id: @user.id,
+                start_date: (Date.today - 7.days),
+                end_date: (Date.today + 1.days),
+                client_id: @client.id)
+
     @task = Task.create(name:"task_1",
                         project_id: @project.id,
                         estimated_start_date: (Date.today - 7.days),

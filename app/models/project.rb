@@ -1,7 +1,7 @@
 class Project < ApplicationRecord
   belongs_to :user
   has_many :tasks
-  has_one :client
+  belongs_to :client, optional: true
 
   enum status: {Scheduled: 0, Paused: 1, Completed: 2, Cancelled: 3 }
 
@@ -30,9 +30,10 @@ class Project < ApplicationRecord
     else
       random_password = SecureRandom.hex
       client = Client.new(email: email, password: random_password, password_confirmation: random_password)
+      client.save
     end
-    client.project_id = self.id
-    client.save
+    self.client_id = client.id
+    self.save
   end
 
   def complete_project

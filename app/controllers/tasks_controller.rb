@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_task, only: [:show, :start, :pause , :resume, :complete, :edit, :update]
   before_action :set_project
-  layout 'dashboard'
+  layout 'project'
   def index
     @tasks = @project.tasks.where(updated_at: Date.today)
   end

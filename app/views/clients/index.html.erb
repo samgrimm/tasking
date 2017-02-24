@@ -1,1 +1,9 @@
-<%= @clients.inspect %>
+<% @clients.each do |client| %>
+  <h4><%= client.email %></h4>
+  <ul>
+    <% client.projects.each do |project| %>
+      <li><%= link_to project.name, project %> - status: <%= project.status %></li>
+    <% end %>
+  </ul>
+
+<% end %>

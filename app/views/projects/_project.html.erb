@@ -10,7 +10,7 @@
   <ul class="list-group list-group-flush">
     <li class="list-group-item">Start date: <%= project.start_date %></li>
     <li class="list-group-item">End date: <%= project.end_date %></li>
-    <%= content_tag(:li, project.client.email) unless project.client.nil?%>
+    <%= content_tag(:li, project.client.email, class: "list-group-item") unless project.client.nil?%>
     <li class="list-group-item"><%= pluralize(project.tasks.count, "task")  %> created</li>
   </ul>
 </div>

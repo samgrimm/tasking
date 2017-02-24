@@ -83,7 +83,7 @@ describe 'navigate' do
       fill_in 'project[client]', with: client.email
       click_on "Save"
 
-      expect(Client.last.project.name).to eq("client_association")
+      expect(Client.last.projects.last.name).to eq("client_association")
 
     end
   end
