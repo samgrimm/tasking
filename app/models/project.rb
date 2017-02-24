@@ -16,8 +16,15 @@ class Project < ApplicationRecord
     self.end_date = tasks.maximum(:estimated_end_date)
     self.save
   end
+
   def tasks_completed
     tasks.where(status: 3, updated_at: (Date.today - 6.days)).count
+  end
+
+  def pause_tasks
+    tasks.each do |task|
+      task.Paused!
+    end
   end
 
   def send_report

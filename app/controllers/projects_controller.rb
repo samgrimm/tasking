@@ -37,6 +37,7 @@ class ProjectsController < ApplicationController
   def pause
     @project = Project.find(params[:id])
     @project.Paused!
+    @project.pause_tasks
     redirect_to projects_path, notice: "You have paused work on #{@project.name}"
   end
 
@@ -55,6 +56,7 @@ class ProjectsController < ApplicationController
   def cancel
     @project = Project.find(params[:id])
     @project.Cancelled!
+    @project.pause_tasks
     redirect_to projects_path, notice: "You have cancelled #{@project.name}"
   end
 
