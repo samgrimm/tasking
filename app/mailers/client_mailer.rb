@@ -7,6 +7,6 @@ class ClientMailer < ApplicationMailer
   #
   def report(project)
     @project = project
-    mail to: @project.client.email
+    mail to: @project.client.email, subject: "Report for #{@project.name}"
   end
 end

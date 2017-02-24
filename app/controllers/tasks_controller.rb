@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   before_action :set_project
   layout 'project'
   def index
-    @tasks = @project.tasks.where(updated_at: Date.today)
+    @tasks = @project.tasks_worked_today
   end
 
   def new

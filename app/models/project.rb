@@ -49,4 +49,19 @@ class Project < ApplicationRecord
     self.save
   end
 
+  def tasks_worked_today
+    tasks = self.tasks.where("updated_at < ? ", (Date.today - 1.days))
+  end
+
+  def percent_complete
+    total_hours = tasks.sum(:duration)
+    if total_hours == 0
+      percent_complete = 0
+    else
+      completed_hours = tasks.where(status: "Completed").sum(:duration)
+      percent_complete = (completed_hours/total_hours)*100
+    end
+    return percent_complete.truncate(0).to_s + "%"
+  end
+
 end
