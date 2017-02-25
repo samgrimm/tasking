@@ -8,20 +8,35 @@ class Task < ApplicationRecord
     self.save
   end
 # needs refactoring
+
+  def calculate_duration
+    last_time_tracker = self.time_tracker
+    calc_duration = DateTime.now.to_f - last_time_tracker.to_f
+    self.actual_duration = self.actual_duration + calc_duration
+    self.time_tracker = DateTime.now
+  end
   def pause_task
     self.status = "Paused"
-    last_update = self.updated_at
+    self.calculate_duration
     self.save
-    calc_duration = (self.updated_at - last_update) / 3600
-    self.actual_duration = self.actual_duration + calc_duration
+  end
+
+  def start_task
+    self.status = "Working"
+    self.time_tracker = DateTime.now
+    self.save
+  end
+
+  def resume_task
+    self.status = "Working"
+    self.time_tracker = DateTime.now
+    self.save
   end
 
   def complete_task
     self.status = "Completed"
-    last_update = self.updated_at
+    self.calculate_duration
     self.save
-    calc_duration = (self.updated_at - last_update) / 3600
-    self.actual_duration = self.actual_duration + calc_duration
   end
 
 end

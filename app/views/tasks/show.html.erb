@@ -4,7 +4,7 @@
   Estimated Duration: <%= @task.duration %>
 </p>
 <p >
-  Actual Duration: <%= @task.actual_duration %>
+  Time spent so far: <%= distance_of_time_in_words(Time.now, Time.now + @task.actual_duration ) %>
 </p>
 
 <p>

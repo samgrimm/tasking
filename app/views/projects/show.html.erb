@@ -43,7 +43,7 @@
           <td> <%= task.estimated_end_date %></td>
           <td> <%= task.status %></td>
           <% if task.Completed? %>
-            <td><%= (task.actual_duration * 3600).truncate(0) %> hours</td>
+            <td><%= distance_of_time_in_words(Time.now, Time.now + task.actual_duration ) %> </td>
             <td><%= task.updated_at.strftime("Completed on %m/%d/%Y")  %></td>
           <% else %>
             <% if task.Paused? %>

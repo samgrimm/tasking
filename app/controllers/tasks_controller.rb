@@ -37,8 +37,9 @@ class TasksController < ApplicationController
   end
 
   def start
+    @task.time_tracker = DateTime.now
     @task.actual_start_date = Date.today
-    @task.status = "Working"
+    @task.Working!
     if @task.save
       redirect_to project_task_path(@project, @task), notice: "You are currently working on #{@task.name}"
     else
@@ -56,7 +57,7 @@ class TasksController < ApplicationController
   end
 
   def resume
-    @task.Working!
+    @task.resume_task
     redirect_to project_task_path(@project, @task), notice: "You have resumed work on #{@task.name}"
   end
 
