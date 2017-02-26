@@ -3,15 +3,18 @@
 <p id="totalTime">
   Estimated Duration: <%= @task.duration %>
 </p>
+<h4>
+  <%= @task.status %>
+</h4>
 <p >
   Time spent so far: <%= distance_of_time_in_words(Time.now, Time.now + @task.actual_duration ) %>
 </p>
 
 <p>
-    <%= link_to 'Edit Task', edit_project_task_path(@task.project, @task) %> |
+    <%= link_to 'Edit Task', edit_project_task_path(@task.project, @task) unless @task.Completed? %>
     <%= link_to 'Pause Task', pause_project_task_path(@task.project, @task) if @task.Working? || @task.Scheduled? %>
     <%= link_to 'Resume Task', resume_project_task_path(@task.project, @task) if @task.Paused? %>
-   |<%= link_to 'Complete Task', complete_project_task_path(@task.project, @task) unless @task.Completed? %>
+    <%= link_to 'Complete Task', complete_project_task_path(@task.project, @task) unless @task.Completed? %>
 </p>
 <div class="">
   <p><%= @task.description %></p>
