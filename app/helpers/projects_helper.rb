@@ -30,7 +30,7 @@ module ProjectsHelper
   def percent_complete project
     total_hours = total_hours project
     if total_hours == 0
-      percent_complete = 0
+      percent_complete = 0.00
     else
       completed_hours = project.tasks.where(status: "Completed").sum(:duration)
       percent_complete = (completed_hours/total_hours)*100
