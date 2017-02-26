@@ -56,7 +56,7 @@ class Project < ApplicationRecord
   def percent_complete
     total_hours = tasks.sum(:duration)
     if total_hours == 0
-      percent_complete = 0
+      percent_complete = 0.00
     else
       completed_hours = tasks.where(status: "Completed").sum(:duration)
       percent_complete = (completed_hours/total_hours)*100
