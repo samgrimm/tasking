@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_project, only: [:show, :start, :pause , :resume, :complete, :send_reort]
+  before_action :set_project, only: [:show, :start, :pause , :resume, :complete, :send_report]
   layout 'dashboard', only: [:index, :new ]
 
   def index
