@@ -11,7 +11,7 @@ RSpec.describe ClientMailer, type: :mailer do
     it "renders the headers" do
       expect(mail.subject).to eq("Report for #{project.name}")
       expect(mail.to).to eq([client.email])
-      expect(mail.from).to eq(["from@example.com"])
+      expect(mail.from).to eq(["samantha.grimm@gmail.com"])
     end
 
     it "renders the body" do
