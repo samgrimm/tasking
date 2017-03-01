@@ -2,9 +2,9 @@
 
 I was doing work for a client and trying hard to keep them up-to-speed on what was accomplished everyday. That meant that I was wasting time writing emails, while I could be coding. So I decided to create an app to keep track of my projects and tasks for those projects and that would create a daily report that I can email to a client with a summary of the tasks worked on that day.
 
-Feel free to create an account an play with it in [here](https://sam-task-force.herokuapp.com/)
+Feel free to create an account and play with it in [here](https://sam-task-force.herokuapp.com/)
 
-Or, if you want to clone and deploy it yourself:
+If you want to clone and deploy it yourself, here is the basic information:
 
 * Ruby: 2.4.0
 * Rails: 5.0.1
