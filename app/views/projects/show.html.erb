@@ -1,19 +1,19 @@
 <div class="mt-2">
   <div class="row">
     <div class="col-lg-4 ">
-      <div class="card bg-warning text-center">
+      <div class="card card-warning text-center">
         <i class="fa fa-flag fa-4x fa-inverse"></i>
         <h4 class="mt-3"><%= @project.tasks.where(status: 0).count %> Active Tasks</h4>
       </div>
     </div>
     <div class="col-lg-4">
-      <div class="card bg-danger text-center">
+      <div class="card card-danger text-center">
         <i class="fa fa-fire fa-4x fa-inverse"></i>
         <h4 class="mt-3"><%= @project.tasks.where(status: 1).count %> Tasks Past Due</h4>
       </div>
     </div>
     <div class="col-lg-4">
-      <div class="card bg-success text-center">
+      <div class="card card-success text-center">
         <i class="fa fa-trophy fa-4x fa-inverse"></i>
         <h4 class="mt-3"><%= @project.tasks_completed %> tasks completed this week</h4>
       </div>
