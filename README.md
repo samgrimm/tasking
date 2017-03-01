@@ -17,11 +17,13 @@ If you want to clone and deploy it yourself, here is the basic information:
 
 ### MAILER  
 * Don't forget to change your email settings in production.rb:
+
   ```ruby
   config.action_mailer.default_url_options = { :host => "sam-task-force.herokuapp.com" }
   ```
 * Use the sendgrid add-on with heroku
 * Change application_mailer.rb
+
 ```ruby
 class ApplicationMailer < ActionMailer::Base
   default from: '<your email goes here >'
